@@ -1,5 +1,33 @@
 const menuToggle = document.querySelector(".menu-toggle");
 const siteNav = document.querySelector(".site-nav");
+const themeToggle = document.querySelector(".theme-toggle");
+const themeColor = document.querySelector('meta[name="theme-color"]');
+
+const updateTheme = (theme) => {
+  const isDark = theme === "dark";
+  document.documentElement.dataset.theme = theme;
+  themeToggle.setAttribute("aria-pressed", String(isDark));
+  themeToggle.setAttribute("aria-label", `Cambiar a tema ${isDark ? "claro" : "oscuro"}`);
+  themeColor.content = isDark ? "#20221e" : "#f6f3ed";
+};
+
+let savedTheme;
+try {
+  savedTheme = localStorage.getItem("bruma-theme");
+} catch (error) {
+  console.error("No se pudo leer el tema guardado.", error);
+}
+updateTheme(savedTheme === "dark" ? "dark" : "light");
+
+themeToggle.addEventListener("click", () => {
+  const theme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+  updateTheme(theme);
+  try {
+    localStorage.setItem("bruma-theme", theme);
+  } catch (error) {
+    console.error("No se pudo guardar la preferencia de tema.", error);
+  }
+});
 
 menuToggle.addEventListener("click", () => {
   const isExpanded = menuToggle.getAttribute("aria-expanded") === "true";

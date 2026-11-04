@@ -4,9 +4,30 @@
   --ink: #292b23;
   --muted: #77786e;
   --green: #435b43;
+  --green-hover: #334733;
+  --button-text: #fff;
   --line: #dedbd2;
+  --header-border: rgba(41, 43, 35, 0.1);
+  --surface: #eeece4;
+  --surface-strong: #e8e8de;
+  --widget-bg: rgba(246, 243, 237, 0.96);
   --serif: "Playfair Display", Georgia, serif;
   --sans: "DM Sans", sans-serif;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --paper: #20221e;
+  --ink: #f2efe7;
+  --muted: #b3b2a7;
+  --green: #a4b892;
+  --green-hover: #b5c6a3;
+  --button-text: #20221e;
+  --line: #45483f;
+  --header-border: rgba(242, 239, 231, 0.12);
+  --surface: #292c25;
+  --surface-strong: #30332b;
+  --widget-bg: rgba(36, 39, 33, 0.96);
 }
 
 * {
@@ -43,7 +64,13 @@ button {
   justify-content: space-between;
   min-height: 88px;
   padding: 0 7.2%;
-  border-bottom: 1px solid rgba(41, 43, 35, 0.1);
+  border-bottom: 1px solid var(--header-border);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .brand {
@@ -71,6 +98,48 @@ button {
 
 .brand-period {
   color: #a97852;
+}
+
+.theme-toggle {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  transition: background 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+
+.theme-toggle:hover {
+  background: var(--surface);
+  transform: rotate(12deg);
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 3px;
+}
+
+.theme-icon {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.6;
+}
+
+.theme-icon-moon,
+[data-theme="dark"] .theme-icon-sun {
+  display: none;
+}
+
+[data-theme="dark"] .theme-icon-moon {
+  display: block;
 }
 
 .site-nav {
@@ -206,11 +275,11 @@ h2 em {
 
 .button-dark {
   background: var(--green);
-  color: #fff;
+  color: var(--button-text);
 }
 
 .button-dark:hover {
-  background: #334733;
+  background: var(--green-hover);
 }
 
 .text-link {
@@ -338,7 +407,7 @@ h2 em {
 .intro {
   padding-top: 110px;
   padding-bottom: 113px;
-  background: #eeece4;
+  background: var(--surface);
 }
 
 .intro-content {
@@ -379,11 +448,11 @@ h2 {
   position: relative;
   min-height: 190px;
   padding: 25px 24px;
-  border-top: 1px solid #d6d3ca;
+  border-top: 1px solid var(--line);
 }
 
 .value-number {
-  color: #a2a094;
+  color: var(--muted);
   font-size: 9px;
   letter-spacing: 1px;
 }
@@ -493,7 +562,7 @@ h2 {
   padding-top: 112px;
   padding-bottom: 110px;
   overflow: hidden;
-  background: #e8e8de;
+  background: var(--surface-strong);
 }
 
 .visit-copy,
@@ -552,7 +621,7 @@ h2 {
 .detail-email {
   display: inline-block;
   padding-bottom: 5px;
-  border-bottom: 1px solid #b6b5aa;
+  border-bottom: 1px solid var(--line);
   font-size: 11px;
   font-weight: 600;
 }
@@ -605,9 +674,9 @@ h2 {
   flex-direction: column;
   align-items: center;
   padding: 14px 12px 12px;
-  border: 1px solid rgba(67, 91, 67, 0.18);
+  border: 1px solid var(--line);
   border-radius: 80px 80px 4px 4px;
-  background: rgba(246, 243, 237, 0.96);
+  background: var(--widget-bg);
   box-shadow: 0 8px 28px rgba(41, 43, 35, 0.12);
   backdrop-filter: blur(8px);
 }
@@ -616,12 +685,12 @@ h2 {
   position: relative;
   width: 98px;
   aspect-ratio: 1;
-  border: 1px solid #d5d0c3;
+  border: 1px solid var(--line);
   border-radius: 50%;
   background:
     radial-gradient(circle, var(--paper) 0 68%, transparent 69%),
     repeating-conic-gradient(from -1deg, #918a78 0deg 1deg, transparent 1deg 30deg);
-  box-shadow: inset 0 0 0 4px var(--paper), inset 0 0 0 5px #ded9cc;
+  box-shadow: inset 0 0 0 4px var(--paper), inset 0 0 0 5px var(--line);
 }
 
 .clock-number {
@@ -755,19 +824,28 @@ h2 {
     padding: 0 6%;
   }
 
+  .header-actions {
+    gap: 8px;
+  }
+
+  .theme-toggle,
   .menu-toggle {
-    position: relative;
-    z-index: 2;
     display: grid;
     width: 42px;
     height: 42px;
-    align-content: center;
-    justify-items: center;
-    gap: 6px;
+    place-items: center;
     border: 1px solid var(--line);
     border-radius: 50%;
     background: transparent;
     cursor: pointer;
+  }
+
+  .menu-toggle {
+    position: relative;
+    z-index: 2;
+    align-content: center;
+    justify-items: center;
+    gap: 6px;
   }
 
   .menu-toggle span {
