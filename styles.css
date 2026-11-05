@@ -196,12 +196,13 @@ button {
 .hero {
   position: relative;
   display: grid;
-  min-height: 690px;
-  grid-template-columns: 0.92fr 1.08fr;
+  min-height: 680px;
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
   align-items: center;
-  gap: 2%;
-  padding: 54px 7.2% 82px;
+  gap: 4%;
+  padding: 58px 8% 78px;
   overflow: hidden;
+  background: linear-gradient(112deg, var(--paper) 0%, var(--paper) 58%, var(--surface) 100%);
 }
 
 .hero::before {
@@ -213,22 +214,21 @@ button {
   border: 1px solid var(--line);
   border-radius: 50%;
   content: "";
-  opacity: 0.6;
+  opacity: 0.42;
   pointer-events: none;
 }
 
 .hero-copy {
   position: relative;
   z-index: 1;
-  max-width: 580px;
-  padding: 28px 0 0;
+  max-width: 520px;
 }
 
 .eyebrow {
   display: flex;
   align-items: center;
   gap: 11px;
-  margin: 0 0 24px;
+  margin: 0 0 26px;
   color: var(--muted);
   font-size: 10px;
   font-weight: 600;
@@ -257,9 +257,10 @@ h2 {
 }
 
 h1 {
-  margin-bottom: 23px;
-  font-size: clamp(48px, 6vw, 80px);
-  line-height: 1.09;
+  margin-bottom: 25px;
+  font-size: clamp(52px, 6.1vw, 82px);
+  line-height: 1.04;
+  letter-spacing: -3.1px;
 }
 
 h1 em,
@@ -269,11 +270,11 @@ h2 em {
 }
 
 .hero-description {
-  max-width: 405px;
-  margin-bottom: 29px;
+  max-width: 380px;
+  margin-bottom: 31px;
   color: var(--muted);
   font-size: 14px;
-  line-height: 1.9;
+  line-height: 1.85;
 }
 
 .hero-actions {
@@ -317,7 +318,7 @@ h2 em {
   display: flex;
   align-items: center;
   gap: 13px;
-  margin-top: 47px;
+  margin-top: 42px;
 }
 
 .avatar-stack {
@@ -362,9 +363,9 @@ h2 em {
 
 .hero-visual {
   position: relative;
-  height: min(550px, 44vw);
-  min-height: 390px;
-  margin-left: 6%;
+  height: min(550px, 43vw);
+  min-height: 410px;
+  margin-left: 2%;
 }
 
 .hero-image,
@@ -382,18 +383,29 @@ h2 em {
   transition: transform 500ms ease;
 }
 
+.hero-visual::after {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  border-radius: 46% 46% 2px 2px;
+  background: linear-gradient(180deg, transparent 68%, rgba(24, 27, 21, 0.2));
+  content: "";
+  pointer-events: none;
+}
+
 .hero-visual:hover .hero-image {
   transform: scale(1.015);
 }
 
 .image-label {
   position: absolute;
-  right: -25px;
-  bottom: 43px;
+  z-index: 2;
+  right: -20px;
+  bottom: 38px;
   display: flex;
   align-items: center;
   gap: 13px;
-  padding: 17px 20px;
+  padding: 17px 21px;
   border: 1px solid var(--line);
   background: var(--widget-bg);
   box-shadow: 0 14px 40px rgba(31, 32, 25, 0.12);
@@ -415,11 +427,12 @@ h2 em {
 
 .image-index {
   position: absolute;
+  z-index: 2;
   right: 0;
-  top: 20px;
+  top: 24px;
   color: #fff;
-  font-size: 9px;
-  letter-spacing: 1px;
+  font-size: 10px;
+  letter-spacing: 1.4px;
   text-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
 }
 
@@ -427,7 +440,7 @@ h2 em {
   position: absolute;
   right: 2.8%;
   bottom: 112px;
-  color: #8c8a80;
+  color: var(--muted);
   font-size: 8px;
   letter-spacing: 2px;
   writing-mode: vertical-rl;
@@ -877,14 +890,21 @@ button:focus-visible {
   }
 
   .hero {
-    min-height: 570px;
+    min-height: 600px;
+    gap: 3%;
     padding-right: 5%;
     padding-left: 5%;
   }
 
+  .hero h1 {
+    font-size: clamp(42px, 6vw, 55px);
+    letter-spacing: -2.4px;
+  }
+
   .hero-visual {
     height: 450px;
-    margin-left: 3%;
+    min-height: 380px;
+    margin-left: 0;
   }
 
   .section-wrap {
@@ -983,8 +1003,9 @@ button:focus-visible {
   .hero {
     min-height: 0;
     grid-template-columns: 1fr;
-    gap: 42px;
-    padding: 64px 7% 75px;
+    gap: 37px;
+    padding: 62px 7% 72px;
+    background: linear-gradient(180deg, var(--paper) 0%, var(--paper) 62%, var(--surface) 100%);
   }
 
   .hero::before {
@@ -997,7 +1018,9 @@ button:focus-visible {
   }
 
   h1 {
-    font-size: clamp(48px, 13vw, 68px);
+    max-width: 560px;
+    font-size: clamp(44px, 12.2vw, 65px);
+    letter-spacing: -2.4px;
   }
 
   .hero-description {
@@ -1005,14 +1028,14 @@ button:focus-visible {
   }
 
   .hero-note {
-    margin-top: 33px;
+    margin-top: 30px;
   }
 
   .hero-visual {
-    width: 88%;
-    height: 112vw;
-    min-height: 360px;
-    max-height: 490px;
+    width: 89%;
+    height: 108vw;
+    min-height: 340px;
+    max-height: 470px;
     margin: 0 auto;
   }
 
@@ -1021,8 +1044,9 @@ button:focus-visible {
   }
 
   .image-label {
-    right: -22px;
-    bottom: 27px;
+    right: -14px;
+    bottom: 25px;
+    padding: 15px 17px;
   }
 
   .hero-side-note {
