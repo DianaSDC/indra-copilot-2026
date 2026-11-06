@@ -4,7 +4,7 @@ Bruma es una página web estática de presentación para una cafetería ficticia
 
 ## Funcionalidades
 
-- Diseño adaptable a móviles y escritorio.
+- Diseño adaptable a móviles y escritorio....
 - Menú de navegación móvil.
 - Selector de tema claro y oscuro; la preferencia se guarda en el navegador.
 - Reloj analógico y hora local actualizados en tiempo real.
