@@ -27,6 +27,14 @@ No es necesario instalar dependencias ni compilar el proyecto. Abre `index.html`
 
 Para trabajar en local, también puedes abrir la carpeta en Visual Studio Code y servirla con una extensión como **Live Server**.
 
+## Pruebas
+
+Las pruebas usan el ejecutor integrado de Node.js (versión 18 o posterior), sin instalar dependencias. Desde la raíz del proyecto, ejecútalas con:
+
+```text
+node --test
+```
+
 ## Personalización
 
 - Edita `index.html` para cambiar los textos, la carta, la dirección, los horarios y los enlaces.
